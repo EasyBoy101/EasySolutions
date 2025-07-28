@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+   <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="profile-avatar mb-3">
+                {% if p_form.instance.image %}
+                  <img src="{{p_form.instance.image.url}}" class="rounded-circle"
+                 alt="Profile Picture" width="120" height="120">
+
+                {% else %}
+                   <img src="{% static 'images/default_profile.png' %}" class="rounded-circle"
+                 alt="Profile Picture" width="120" height="120">
+
+                {% endif %}
+                
+                <button class="btn btn-sm btn-primary position-absolute bottom-0 end-0 rounded-circle">
+                  <i class="fas fa-camera"></i>
+                </button>
+              </div>
+              <h4 class="fw-bold mb-1">{{request.user.get_full_name|default:request.user.username}}</h4>
+              <div class="d-grid">
+                  <button class="btn btn-outline-primary btn-sm">Edit Profile</button>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Menu -->
+          <div class="card border-0 shadow-sm mt-4">
+              <div class="card-body p-0">
+                  <div class="list-group list-group-flush">
+                      <a href="#profile-info" class="list-group-item list-group-item-action active" data-bs-toggle="pill">
+                          <i class="fas fa-user me-3"></i>Profile Information
+                      </a>
+
+                      <a href="#security" class="list-group-item list-group-item-action" data-bs-toggle="pill">
+                          <i class="fas fa-shield-alt me-3"></i>Security
+                      </a>
+                  </div>
+              </div>
+          </div>
+        </div>
+   <!-- Profile Content -->
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <!-- Profile Information Tab -->
+                        
+                        <div class="tab-pane fade show active" id="profile-info">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 fw-bold">Update Profile Information</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <form id="profileForm" method="post" enctype="multipart/form-data">
+                                      {% csrf_token %}
+                                      {% if messages %}
+                                          {% for message in messages %}
+                                              <div class="alert alert-success" role="alert">
+                                              {{ message }}
+                                              </div>
+                                          {% endfor %}
+                                      {% endif %}
+                                      {{ p_form.non_field_errors }}
+                                      {{ u_form.non_field_errors }}
+
+                                      <div class="row g-3">
+                                          <div class="col-md-6">
+                                              {{u_form.first_name.label_tag}}
+                                              {{u_form.first_name}}
+                                              {% if u_form.first_name.errors %}
+                                                <div class="text-danger ">{{ u_form.first_name.errors }}</div>
+                                              {% endif %}
+                                              
+                                          </div>
+                                          <div class="col-md-6">
+                                               {{u_form.last_name.label_tag}}
+                                              {{u_form.last_name}}
+                                              {% if u_form.last_name.errors %}
+                                                <div class="text-danger ">{{ u_form.last_name.errors }}</div>
+                                              {% endif %}
+                                          </div>
+                                          <div class="col-12">
+                                               {{u_form.username.label_tag}}
+                                              {{u_form.username}}
+                                              {% if u_form.username.errors %}
+                                                <div class="text-danger ">{{ u_form.username.errors }}</div>
+                                              {% endif %}
+                                          </div>
+                                          <div class="col-12">
+                                               {{u_form.email.label_tag}}
+                                              {{u_form.email}}
+                                              {% if u_form.email.errors %}
+                                                <div class="text-danger ">{{ u_form.email.errors }}</div>
+                                              {% endif %}
+                                          </div>
+                                          
+                                          <div class="col-12">
+                                             {{p_form.image.label_tag}}
+                                              {{p_form.image}}
+                                              {% if p_form.image.errors %}
+                                                <div class="text-danger ">{{ p_form.bio.errors }}</div>
+                                              {% endif %}
+                                          </div>
+                                          <div class="col-12">
+                                             {{p_form.bio.label_tag}}
+                                              {{p_form.bio}}
+                                              {% if p_form.bio.errors %}
+                                                <div class="text-danger ">{{ p_form.bio.errors }}</div>
+                                              {% endif %}
+                                          </div>
+                                          <div class="col-12">
+                                              <button type="submit" class="btn btn-primary">
+                                                  <i class="fas fa-save me-2"></i>Save Changes
+                                              </button>
+                                              <button type="button" class="btn btn-outline-secondary ms-2">Cancel</button>
+                                          </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="security">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white py-3">
+                                    <h5 class="mb-0 fw-bold">Security Settings</h5>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <h6 class="fw-bold mb-3">Change Password</h6>
+                                            <form id="passwordForm" method="POST" action="{% url 'change_password' %}">
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="otp" class="form-label">Enter OTP (sent to your email)</label>
+                                                <input type="text" name="otp" class="form-control" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="newPassword" class="form-label">New Password</label>
+                                                <input type="password" name="new_password1" class="form-control" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                                                <input type="password" name="new_password2" class="form-control" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Update Password</button>
+                                        </form>
+                                        <form method="POST" action="{% url 'send_otp' %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-sm btn-secondary">Send OTP</button>
+                                            </form>
+                                    </div>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+    </div>
+   </section>
+
+{% endblock main %}

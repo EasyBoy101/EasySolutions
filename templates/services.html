@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Services - EasySolutions{% endblock title %}
+
+{% block hero %}
+    <section class="page-header bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold">Our Services</h1>
+                    <p class="lead">Comprehensive solutions to help your business thrive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock hero %}
+
+{% block main %}
+     <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-primary text-white rounded-circle mb-3">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Web Development</h4>
+                            <p class="card-text text-muted mb-4">Custom websites and web applications built with modern technologies and best practices.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+                                <li><i class="fas fa-check text-success me-2"></i>E-commerce Solutions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>CMS Integration</li>
+                                <li><i class="fas fa-check text-success me-2"></i>SEO Optimization</li>
+                            </ul>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-success text-white rounded-circle mb-3">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Mobile Development</h4>
+                            <p class="card-text text-muted mb-4">Native and cross-platform mobile applications for iOS and Android devices.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>iOS Development</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Android Development</li>
+                                <li><i class="fas fa-check text-success me-2"></i>React Native</li>
+                                <li><i class="fas fa-check text-success me-2"></i>App Store Deployment</li>
+                            </ul>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-warning text-white rounded-circle mb-3">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Cloud Solutions</h4>
+                            <p class="card-text text-muted mb-4">Scalable cloud infrastructure and migration services for modern businesses.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>AWS/Azure Setup</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Cloud Migration</li>
+                                <li><i class="fas fa-check text-success me-2"></i>DevOps Solutions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>24/7 Monitoring</li>
+                            </ul>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-info text-white rounded-circle mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Digital Marketing</h4>
+                            <p class="card-text text-muted mb-4">Comprehensive digital marketing strategies to grow your online presence.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>SEO & SEM</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Social Media Marketing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Content Marketing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Analytics & Reporting</li>
+                            </ul>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-danger text-white rounded-circle mb-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Cybersecurity</h4>
+                            <p class="card-text text-muted mb-4">Protect your business with comprehensive security solutions and monitoring.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>Security Audits</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Penetration Testing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Security Training</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Incident Response</li>
+                            </ul>
+                            <a href="{% url 'contact' %}"  class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card card h-100 border-0 shadow-sm hover-lift">
+                        <div class="card-body p-4">
+                            <div class="service-icon bg-secondary text-white rounded-circle mb-3">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4 class="card-title mb-3">IT Consulting</h4>
+                            <p class="card-text text-muted mb-4">Strategic IT consulting to optimize your technology infrastructure and processes.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>Technology Assessment</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Digital Transformation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Process Optimization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Training & Support</li>
+                            </ul>
+                            <a href="{% url 'contact' %}"  class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-6 fw-bold mb-4">Ready to Get Started?</h2>
+                    <p class="lead text-muted mb-4">Let's discuss how we can help transform your business with our innovative solutions.</p>
+                    <a href="{% url 'contact' %}"  class="btn btn-primary btn-lg me-3">Contact Us</a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Sign Up Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}
